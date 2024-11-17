@@ -11,3 +11,8 @@ Thumbs.db
 .env*
 struktur.txt
 .vscode/
+
+_site/
+node_modules/
+package-lock.json
+.cache
