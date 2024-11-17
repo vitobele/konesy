@@ -1,0 +1,13 @@
+# Disgenerated files
+.eleventycache
+.netlify
+.vercel
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Local development files
+.env*
+struktur.txt
+.vscode/
