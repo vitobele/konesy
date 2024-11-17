@@ -1,9 +1,8 @@
-// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
-module.exports = {module.exports = {
-    content: [
-      "./src/**/**/*.{html,js,css}", // Tambahkan ekstensi .css
-    ],
+module.exports = {
+  content: [
+    "./src/**/*.{html,js,jsx,ts,tsx}", // Sertakan ekstensi yang relevan dengan proyek Anda
+  ],
   theme: {
     extend: {},
   },
