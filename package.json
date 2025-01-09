@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "node -e \"try { require('fs').rmSync('_site', { recursive: true, force: true }); } catch (e) { if (e.code !== 'ENOENT') throw e; }\"",
+    "clean:modules": "rm -rf node_modules",
     "build": "npm run build:css && npx @11ty/eleventy",
     "start": "concurrently \"npm run watch:css\" \"npx @11ty/eleventy --serve --quiet\"",
     "11ty:serve": "npx @11ty/eleventy --serve --quiet",
