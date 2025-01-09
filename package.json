@@ -1,10 +1,9 @@
 {
   "name": "konesy",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
     "clean": "node -e \"try { require('fs').rmSync('_site', { recursive: true, force: true }); } catch (e) { if (e.code !== 'ENOENT') throw e; }\"",
-    "clean:modules": "rm -rf node_modules",
+    "clean:modules": "node -e \"require('fs').rmSync('node_modules', { recursive: true, force: true });\"",
     "build": "npm run build:css && npx @11ty/eleventy",
     "start": "concurrently \"npm run watch:css\" \"npx @11ty/eleventy --serve --quiet\"",
     "11ty:serve": "npx @11ty/eleventy --serve --quiet",
@@ -14,13 +13,17 @@
     "debugstart": "cross-env DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "vitobele vitobeleblog@gmail.com",
+  "license": "MIT",
   "description": "",
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
     "concurrently": "^9.1.0",
     "cross-env": "^7.0.3",
     "tailwindcss": "^3.4.17"
+  },
+  "engines": {
+  "node": ">=18",
+  "npm": ">=10"
   }
 }
