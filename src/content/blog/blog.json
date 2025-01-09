@@ -1,0 +1,3 @@
+{
+    "permalink": "/blog/{{(title or slug) | slugify }}/"
+}

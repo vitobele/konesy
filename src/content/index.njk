@@ -1,0 +1,26 @@
+---
+layout: base.html
+permalink: /
+---
+
+<main class="grid sm:grid-cols-12 sm:gap-8 gap-y-8 pt-8 px-4 lg:px-0">
+    <div class="grid sm:col-span-8 gap-y-8">
+        {% for post in collections.posts.slice(0,1) %}
+            {# <!-- Card --> #}
+            {%- include 'comp/card_col8.html' %}
+            {# <!-- End Card --> #}
+        {% endfor %}
+        <div class="grid sm:grid-cols-1 md:grid-cols-2 sm:gap-8 gap-y-8">
+            {% for post in collections.posts.slice(1,3) %}
+                {# <!-- Card --> #}
+                {% include 'comp/card_col4.html' %}
+                {# <!-- End Card --> #}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="grid sm:col-span-4 gap-y-8 content-start">
+        {% for post in collections.posts.slice(3,collections.posts.length) %}
+            {% include 'comp/media_1x1.njk' %}
+        {% endfor %}
+    </div>
+</main>
