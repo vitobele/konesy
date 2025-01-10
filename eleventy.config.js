@@ -6,6 +6,10 @@ module.exports = function(eleventyConfig) {
       }
     });
 
+    // Merge data instead of overriding
+    // https://www.11ty.dev/docs/data-deep-merge/
+    eleventyConfig.setDataDeepMerge(true);
+
     eleventyConfig.addPassthroughCopy({"src/img":"/img"});
 
     eleventyConfig.addCollection("posts", function (collectionApi) {
