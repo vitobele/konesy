@@ -13,10 +13,10 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy({"src/img":"/img"});
 
     eleventyConfig.addCollection("posts", function (collectionApi) {
-      return collectionApi.getFilteredByGlob("./src/content/**/*.md").reverse();
+      return collectionApi.getFilteredByGlob("./src/content/posts/**/*.md").reverse();
     });
     eleventyConfig.addCollection("blog", function (collectionApi) {
-      return collectionApi.getFilteredByGlob("./src/content/blog/**/*.md").reverse();
+      return collectionApi.getFilteredByGlob("./src/content/posts/blog/**/*.md").reverse();
     });
     
     return {
