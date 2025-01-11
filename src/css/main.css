@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    .PostBody>p {
+      @apply text-lg text-gray-800 dark:text-neutral-200;
+    }
+    .PostBody>h2 {
+      @apply text-2xl font-semibold dark:text-white;
+    }
+    .PostBody>ul, .PostBody>ol{
+      @apply list-outside space-y-5 ps-5 text-lg text-gray-800 dark:text-neutral-200;
+    }
+    .PostBody>ul, .PostBody>ul>li>ul, .PostBody>ol>li>ul{
+        @apply list-disc;
+    }
+    .PostBody>ol{
+        @apply list-decimal;
+    }
+    .PostBody>ol>li>ul>li, .PostBody>ul>li>ul>li, .PostBody>ul>li>ol>li, .PostBody>ol>li>ol>li{
+        @apply ms-4
+    }
+  }
