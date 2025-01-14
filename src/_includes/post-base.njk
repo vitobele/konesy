@@ -56,8 +56,8 @@ layout: base.html
                 // Panjang digit dari nomor urut Log ke konsol untuk debugging
                 console.log('Item:', itemNumber, 'Panjang Digit:', numDigits);
                 // Jika nomor urut lebih dari 2 digit, berikan margin sesuai dengan panjang digit
-                if (numDigits >= 2) { // Menyesuaikan kondisi untuk 2 digit atau lebih
-                    const marginLeft = numDigits * 0.5 + 'em'; // Margin dinamis berdasarkan panjang digit
+                if (numDigits > 2) { // Menyesuaikan kondisi untuk lebih dari 2 digit
+                    const marginLeft = numDigits * 0.5 + 'rem'; // Margin dinamis berdasarkan panjang digit
                     li.style.marginLeft = marginLeft;
                     // Terapkan margin pada elemen li Log ke konsol untuk debugging
                     console.log(`Applied margin-left of ${marginLeft} to item ${itemNumber}`);
