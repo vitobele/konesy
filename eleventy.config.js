@@ -11,6 +11,8 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.setDataDeepMerge(true);
 
     eleventyConfig.addPassthroughCopy({"src/img":"/img"});
+    eleventyConfig.addPassthroughCopy({"src/js":"/js"});
+    eleventyConfig.addPassthroughCopy({"src/css/lib":"/css/lib"});
 
     eleventyConfig.addCollection("posts", function (collectionApi) {
       return collectionApi.getFilteredByGlob("./src/content/posts/**/*.md").reverse();
