@@ -74,5 +74,20 @@
     hr{
       @apply my-12;
     }
+    img{
+      @apply w-full object-cover;
+    }
+    figcaption{
+      @apply text-sm mt-2 text-gray-500 dark:text-neutral-500 ps-2;
+    }
+    figcaption::before {
+      content: "";
+      width: 2px;
+      height: 12px;
+      background-color: #FFC107;
+      position: absolute;
+      margin-top: 4px;
+      margin-left: -8px;
+    }
   }
 }
