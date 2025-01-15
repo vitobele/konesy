@@ -25,12 +25,8 @@ module.exports = function(eleventyConfig) {
     html: true, // Enable HTML tags in source
     linkify: true, // Autoconvert URL-like text to links
     typographer: true // Enable smartypants and other typographic transformations
-  }).use(markdownItFootnote)
-    .use(markdownItFootnoteWithHeader);
+  }).use(markdownItFootnote);
 
-  console.log('Markdown-it configuration set with custom plugin');
-
-  // Using markdown-it configuration in 11ty
   eleventyConfig.setLibrary("md", markdownLib);
 
   // Add custom collections
@@ -39,6 +35,18 @@ module.exports = function(eleventyConfig) {
   });
   eleventyConfig.addCollection("blog", function (collectionApi) {
     return collectionApi.getFilteredByGlob("./src/content/posts/blog/**/*.md").reverse();
+  });
+
+  // Transform to add header before footnotes
+  eleventyConfig.addTransform("footnoteHeader", function(content, outputPath) {
+    if(outputPath && outputPath.endsWith(".html")) {
+      const footnoteBlockIndex = content.indexOf('<section class="footnotes">');
+      if (footnoteBlockIndex !== -1) {
+        const header = '<h2>Footnotes</h2>\n';
+        content = content.slice(0, footnoteBlockIndex) + header + content.slice(footnoteBlockIndex);
+      }
+    }
+    return content;
   });
   
   return {
