@@ -1,6 +1,5 @@
 const markdownIt = require("markdown-it");
 const markdownItFootnote = require("markdown-it-footnote");
-const markdownItFootnoteWithHeader = require('./lib/plugins/markdownItFootnoteWithHeader');
 
 module.exports = function(eleventyConfig) {
 
