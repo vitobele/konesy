@@ -120,9 +120,10 @@ greet('Dunia');
 
 ## Catatan Kaki
 
-Ini adalah teks yang memerlukan penjelasan lebih lanjut.[^1]
+Ini adalah teks yang memerlukan penjelasan lebih lanjut.[^1] Dan ini adalah catatan kaki yang ke dua [^2]
 
 [^1]: Penjelasan catatan kaki yang mendalam di sini.
+[^2]: Penjelasan catatan kaki kedua ada di sini.
 
 ## Definisi
 
