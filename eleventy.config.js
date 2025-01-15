@@ -26,6 +26,8 @@ module.exports = function(eleventyConfig) {
     linkify: true, // Autoconvert URL-like text to links
     typographer: true // Enable smartypants and other typographic transformations
   }).use(markdownItFootnote).use(markdownItFootnoteWithHeader);
+  
+  console.log('Markdown-it configuration set with custom plugin');  // Pastikan konfigurasi dijalankan
 
   // Using markdown-it configuration in 11ty
   eleventyConfig.setLibrary("md", markdownLib);
