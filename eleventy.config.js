@@ -41,7 +41,7 @@ module.exports = function(eleventyConfig) {
     if(outputPath && outputPath.endsWith(".html")) {
       const footnoteBlockIndex = content.indexOf('<section class="footnotes">');
       if (footnoteBlockIndex !== -1) {
-        const header = '<h2>Footnotes</h2>\n';
+        const header = '<h2 class="footnotes">Catatan kaki</h2>\n';
         content = content.slice(0, footnoteBlockIndex) + header + content.slice(footnoteBlockIndex);
       }
     }
