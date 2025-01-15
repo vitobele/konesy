@@ -3,43 +3,50 @@ const markdownItFootnote = require("markdown-it-footnote");
 
 module.exports = function(eleventyConfig) {
 
-    eleventyConfig.addPreprocessor("drafts", "*", (data, content) => {
-      if(data.draft && process.env.ELEVENTY_RUN_MODE === "build") {
-        return false;
-      }
-    });
+  // Filter out draft posts during build
+  eleventyConfig.addPreprocessor("drafts", "*", (data, content) => {
+    if(data.draft && process.env.ELEVENTY_RUN_MODE === "build") {
+      return false;
+    }
+  });
 
-    // Merge data instead of overriding
-    // https://www.11ty.dev/docs/data-deep-merge/
-    eleventyConfig.setDataDeepMerge(true);
+  // Merge data instead of overriding
+  // https://www.11ty.dev/docs/data-deep-merge/
+  eleventyConfig.setDataDeepMerge(true);
 
-    eleventyConfig.addPassthroughCopy({"src/img":"/img"});
-    eleventyConfig.addPassthroughCopy({"src/js":"/js"});
-    eleventyConfig.addPassthroughCopy({"src/css/lib":"/css/lib"});
+  // Passthrough file copy
+  eleventyConfig.addPassthroughCopy({"src/img":"/img"});
+  eleventyConfig.addPassthroughCopy({"src/js":"/js"});
+  eleventyConfig.addPassthroughCopy({"src/css/lib":"/css/lib"});
 
-    // Markdown-it configuration with footnote plugin
-    const markdownLib = markdownIt().use(markdownItFootnote);
+  // Markdown-it configuration with footnote plugin
+  const markdownLib = markdownIt({
+    html: true, // Enable HTML tags in source
+    linkify: true, // Autoconvert URL-like text to links
+    typographer: true // Enable smartypants and other typographic transformations
+  }).use(markdownItFootnote);
+
+  // Using markdown-it configuration in 11ty
+  eleventyConfig.setLibrary("md", markdownLib);
+
+  // Add custom collections
+  eleventyConfig.addCollection("posts", function (collectionApi) {
+    return collectionApi.getFilteredByGlob("./src/content/posts/**/*.md").reverse();
+  });
+  eleventyConfig.addCollection("blog", function (collectionApi) {
+    return collectionApi.getFilteredByGlob("./src/content/posts/blog/**/*.md").reverse();
+  });
   
-    // Using markdown-it configuration in 11ty
-    eleventyConfig.setLibrary("md", markdownLib);
+  return {
+    dir: {
+      input: "src",
+      includes: "_includes",
+      output: "_site"
+    },
 
-    eleventyConfig.addCollection("posts", function (collectionApi) {
-      return collectionApi.getFilteredByGlob("./src/content/posts/**/*.md").reverse();
-    });
-    eleventyConfig.addCollection("blog", function (collectionApi) {
-      return collectionApi.getFilteredByGlob("./src/content/posts/blog/**/*.md").reverse();
-    });
-    
-    return {
-      dir: {
-        input: "src",
-        includes: "_includes",
-        output: "_site"
-      },
-
-      templateFormats: ["md", "njk", "html"],
-      markdownTemplateEngine: "njk",
-      htmlTemplateEngine: "njk",
-      dataTemplateEngine: "njk",
-    };
+    templateFormats: ["md", "njk", "html"],
+    markdownTemplateEngine: "njk",
+    htmlTemplateEngine: "njk",
+    dataTemplateEngine: "njk",
   };
+};
