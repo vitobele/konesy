@@ -1,5 +1,6 @@
 const markdownIt = require("markdown-it");
 const markdownItFootnote = require("markdown-it-footnote");
+const markdownItFootnoteWithHeader = require('./lib/plugins/markdownItFootnoteWithHeader');
 
 module.exports = function(eleventyConfig) {
 
@@ -24,7 +25,7 @@ module.exports = function(eleventyConfig) {
     html: true, // Enable HTML tags in source
     linkify: true, // Autoconvert URL-like text to links
     typographer: true // Enable smartypants and other typographic transformations
-  }).use(markdownItFootnote);
+  }).use(markdownItFootnote).use(markdownItFootnoteWithHeader);
 
   // Using markdown-it configuration in 11ty
   eleventyConfig.setLibrary("md", markdownLib);
