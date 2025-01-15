@@ -20,8 +20,6 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem id cons
 
 ---
 
-
-
 # Judul Artikel yang Panjang dan Menarik
 
 ## Subjudul yang Lebih Spesifik
@@ -83,9 +81,17 @@ Proin vel tincidunt ante. Sed ultricies orci in metus feugiat, in dapibus nisl v
 [Klik di sini untuk mengunjungi website contoh](https://www.example.com)
 
 ## Blockquote
+> Ini kutipan dengan sumber menggunakan `<ul>`.
+>
+> - Sumber Kutipan
 
 > Ini adalah kutipan dari seseorang yang sangat bijaksana.
-> - Sumber Kutipan
+>
+> ― Sumber Kutipan
+
+> Markdown is a lightweight markup language with plain-text-formatting syntax, created in 2004 by John Gruber with Aaron Swartz.
+>
+>> Markdown is often used to format readme files, for writing messages in online discussion forums, and to create rich text using a plain text editor.
 
 ## Kode Inline
 
@@ -129,10 +135,6 @@ Ini adalah teks yang memerlukan penjelasan lebih lanjut.[^1]
 Terima kasih telah membaca artikel ini. Jangan ragu untuk menghubungi kami melalui [email](mailto:contact@example.com) untuk pertanyaan lebih lanjut.
 
 Dengan markup di atas, kamu bisa melihat bagaimana berbagai elemen dalam artikel akan di-render di halaman webmu, mulai dari teks, daftar, gambar, kutipan, hingga kode. Sesuaikan bagian ini dengan gaya artikel yang diinginkan dalam proyekmu.
-
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias, vitae sequi, at eligendi pariatur odit corporis porro, harum voluptatem nobis saepe expedita quidem excepturi quisquam enim tenetur dicta recusandae neque rerum eaque! Veritatis odio molestiae dolorem. Numquam, nesciunt perferendis! Aut quisquam, dolorum magnam quos repellat similique et dolor magni non? Id eius illo excepturi consectetur saepe dolor natus omnis corporis?
-
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias, vitae sequi, at eligendi pariatur odit corporis porro, harum voluptatem nobis saepe expedita quidem excepturi quisquam enim tenetur dicta recusandae neque rerum eaque! Veritatis odio molestiae dolorem. Numquam, nesciunt perferendis! Aut quisquam, dolorum magnam quos repellat similique et dolor magni non? Id eius illo excepturi consectetur saepe dolor natus omnis corporis?
 
 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias, vitae sequi, at eligendi pariatur odit corporis porro, harum voluptatem nobis saepe expedita quidem excepturi quisquam enim tenetur dicta recusandae neque rerum eaque! Veritatis odio molestiae dolorem. Numquam, nesciunt perferendis! Aut quisquam, dolorum magnam quos repellat similique et dolor magni non? Id eius illo excepturi consectetur saepe dolor natus omnis corporis?
 
@@ -270,6 +272,38 @@ This tag styles blocks of code.
 `.post-title {   margin: 0 0 5px;   font-weight: bold;   font-size: 38px;   line-height: 1.2;   and here's a line of some really, really, really, really long text, just to see how it is handled and to find out how it overflows;   }`
 You will learn later on in these tests that word-wrap: break-word;will be your best friend.
 
+**Code Block**
+```js
+document.addEventListener("DOMContentLoaded", function () {
+        // Ambil semua elemen ol di dalam PostBody
+        const olElements = document.querySelectorAll('.PostBody ol');
+        // Iterasi melalui setiap elemen ol
+        olElements.forEach(ol => {
+            // Ambil nilai atribut "start" dari elemen ol, jika ada
+            const startValue = ol.hasAttribute('start')
+                ? parseInt(ol.getAttribute('start'))
+                : 1;
+            // Ambil semua elemen li yang merupakan anak langsung dari ol
+            const listItems = ol.querySelectorAll(':scope > li');
+            // Iterasi untuk setiap li
+            listItems.forEach((li, index) => {
+                // Menghitung nomor urut dengan memperhitungkan atribut "start"
+                const itemNumber = startValue + index;
+                const numDigits = itemNumber.toString().length;
+                // Panjang digit dari nomor urut Log ke konsol untuk debugging
+                console.log('Item:', itemNumber, 'Panjang Digit:', numDigits);
+                // Jika nomor urut lebih dari 2 digit, berikan margin sesuai dengan panjang digit
+                if (numDigits > 2) { // Menyesuaikan kondisi untuk lebih dari 2 digit
+                    const marginLeft = numDigits * 0.5 + 'rem'; // Margin dinamis berdasarkan panjang digit
+                    li.style.marginLeft = marginLeft;
+                    // Terapkan margin pada elemen li Log ke konsol untuk debugging
+                    console.log(`Applied margin-left of ${marginLeft} to item ${itemNumber}`);
+                }
+            });
+        });
+    });
+```
+
 **Delete Tag**
 
 This tag will let you ~~strike out text~~, but this tag is _recommended_ supported in HTML5 (use the `<s>` instead).
@@ -280,7 +314,7 @@ The emphasize tag should __italicize__ __text__.
 
 **Horizontal Rule Tag**
 
-* * *
+***
 
 This sentence is following a `<hr />` tag.
 

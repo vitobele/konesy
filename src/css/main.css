@@ -28,6 +28,9 @@
     ol li ul {
       @apply list-disc;
     }
+    >ul, >ol{
+      @apply mb-6;
+    }
     ol {
       @apply list-decimal;
     }
@@ -35,10 +38,41 @@
       @apply ms-2
     }
     pre{
-      @apply my-4;
+      @apply my-6;
     }
     code{
       @apply text-base rounded;
+    }
+    blockquote{ @apply p-4 text-center sm:px-7 italic my-6;}
+    blockquote p{
+        @apply text-xl font-medium md:text-2xl md:leading-normal xl:text-2xl xl:leading-normal text-balance;
+    }
+    blockquote :is(ol, ul){
+        @apply list-none ps-0;
+    }
+    blockquote :is(ul,ol)>li {
+      @apply ms-0
+    }
+    blockquote :is(ul,ol)>li:before { @apply me-2;
+      content: "―";
+    }
+    table{
+      @apply min-w-full divide-y divide-gray-200 dark:divide-neutral-700 my-6 table-auto text-sm;
+    }
+    th{
+      @apply px-2 py-3 text-start font-bold text-gray-500 uppercase dark:text-neutral-500;
+    }
+    tr{
+      @apply odd:bg-white even:bg-gray-100 dark:odd:bg-neutral-900 dark:even:bg-neutral-800;
+    }
+    td{
+      @apply px-2 py-4 text-gray-800 dark:text-neutral-200 align-baseline;
+    }
+    figure{
+      @apply my-8;
+    }
+    hr{
+      @apply my-12;
     }
   }
 }
