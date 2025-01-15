@@ -7,7 +7,7 @@ layout: base.html
     <article class="max-w-2xl mx-auto">
         <div class="space-y-5 md:space-y-8">
             <header class="space-y-4 pb-2 text-pretty">
-                <h1 class="text-3xl font-bold md:text-4xl dark:text-white">{{title}}</h1>
+                <h1 class="text-3xl font-bold md:text-4xl dark:text-white">{{title | capFirstWord}}</h1>
                 <h3 class="font-light italic dark:text-white font-segoe">{{description}}</h3>
                 {# -- categories and date -- #}
                 <div class="flex items-center gap-x-2 border-b py-4">
