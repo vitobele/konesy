@@ -1,3 +1,6 @@
+const markdownIt = require("markdown-it");
+const markdownItFootnote = require("markdown-it-footnote");
+
 module.exports = function(eleventyConfig) {
 
     eleventyConfig.addPreprocessor("drafts", "*", (data, content) => {
@@ -13,6 +16,12 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy({"src/img":"/img"});
     eleventyConfig.addPassthroughCopy({"src/js":"/js"});
     eleventyConfig.addPassthroughCopy({"src/css/lib":"/css/lib"});
+
+    // Markdown-it configuration with footnote plugin
+    const markdownLib = markdownIt().use(markdownItFootnote);
+  
+    // Using markdown-it configuration in 11ty
+    eleventyConfig.setLibrary("md", markdownLib);
 
     eleventyConfig.addCollection("posts", function (collectionApi) {
       return collectionApi.getFilteredByGlob("./src/content/posts/**/*.md").reverse();
