@@ -1,5 +1,6 @@
 const markdownIt = require("markdown-it");
 const markdownItFootnote = require("markdown-it-footnote");
+const filters = require('./lib/filters');
 
 module.exports = function(eleventyConfig) {
 
@@ -35,6 +36,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("blog", function (collectionApi) {
     return collectionApi.getFilteredByGlob("./src/content/posts/blog/**/*.md").reverse();
   });
+
+  // Import and apply filters
+  filters(eleventyConfig);
 
   // Transform to add header before footnotes
   eleventyConfig.addTransform("footnoteHeader", function(content, outputPath) {
