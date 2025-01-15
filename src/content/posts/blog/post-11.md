@@ -68,7 +68,7 @@ Proin vel tincidunt ante. Sed ultricies orci in metus feugiat, in dapibus nisl v
 ## Gambar
 
 <figure><img src="https://placehold.co/800x400" alt="Contoh Gambar">
-<figcaption>Contoh Gambar</figcaption>
+<figcaption>Contoh Gambar. Ini adalah caption, dengan <a href="#">link</a></figcaption>
 </figure>
 
 
