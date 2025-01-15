@@ -26,18 +26,9 @@ module.exports = function(eleventyConfig) {
     linkify: true, // Autoconvert URL-like text to links
     typographer: true // Enable smartypants and other typographic transformations
   }).use(markdownItFootnote)
-    .use((md) => {
-      // Tambahkan log untuk memastikan footnotes diproses
-      const renderFootnote = md.renderer.rules.footnote_ref;
-      if (renderFootnote) {
-        console.log('markdown-it-footnote is processing footnotes');
-      } else {
-        console.log('markdown-it-footnote is NOT processing footnotes');
-      }
-    })
     .use(markdownItFootnoteWithHeader);
 
-  console.log('Markdown-it configuration set with custom plugin');  // Pastikan konfigurasi dijalankan
+  console.log('Markdown-it configuration set with custom plugin');
 
   // Using markdown-it configuration in 11ty
   eleventyConfig.setLibrary("md", markdownLib);
