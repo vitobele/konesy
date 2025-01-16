@@ -21,7 +21,7 @@
       @apply text-xl md:text-2xl;
     }
     :is(ol, ul) {
-      @apply list-outside ps-5 text-lg text-gray-800 dark:text-neutral-200;
+      @apply list-outside ps-5 text-lg text-gray-800 dark:text-neutral-200 space-y-2;
     }
     ul,
     ul li ul,
@@ -35,7 +35,7 @@
       @apply list-decimal;
     }
     li{
-      @apply ms-2
+      @apply ms-2;
     }
     pre{
       @apply my-6;
@@ -84,7 +84,7 @@
       content: "";
       width: 2px;
       height: 12px;
-      background-color: #FFC107;
+      background-color: #fbbf24;
       position: absolute;
       margin-top: 4px;
       margin-left: -8px;
@@ -94,6 +94,9 @@
     }
     a:hover{
       @apply border-b-2;
+    }
+    .footnote-ref a, a.footnote-backref{
+      @apply border-none text-linkTxt dark:text-primary;
     }
   }
 }

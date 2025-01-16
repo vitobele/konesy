@@ -29,5 +29,12 @@
     <div class="max-w-[60rem] mx-auto min-h-screen pt-[57px] overflow-hidden">
         {{content | safe}}
     </div>
+    {% if content | containsPreCode %}
+    <link rel="stylesheet" href="/css/lib/vs2015.min.css">
+        <script src="/js/hljs.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+    {% endif %}
 </body>
 </html>

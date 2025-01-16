@@ -7,8 +7,8 @@ layout: base.html
     <article class="max-w-2xl mx-auto">
         <div class="space-y-5 md:space-y-8">
             <header class="space-y-4 pb-2 text-pretty">
-                <h1 class="text-3xl font-bold md:text-4xl dark:text-white">{{title | capFirstWord}}</h1>
-                <p class="font-light italic dark:text-white font-segoe">{{description}}</p>
+                <h1 class="text-3xl font-bold md:text-4xl dark:text-white">{{ title | capFirstWord }}</h1>
+                <p class="font-light italic dark:text-white font-segoe">{{ description }}</p>
                 {# -- categories and date -- #}
                 <div class="flex items-center gap-x-2 border-b py-4">
                     <a class="block shrink-0 focus:outline-none" href="#">
@@ -30,16 +30,11 @@ layout: base.html
                 {# -- end categories and date -- #}
             </header>
             <section class="PostBody text-pretty">
-                {{content | safe}}
+                {{ content | safe }}
             </section>
         </div>
     </article>
 </main>
 {# -- End Blog Article -- #}
-<link rel="stylesheet" href="/css/lib/vs2015.min.css">
-    <script src="/js/hljs.js"></script>
-    <script>
-        hljs.highlightAll();
-    </script>
-    <script src="/js/ui.js"></script>
-    <script src="/js/ux.js"></script>
+<script src="/js/ui.js"></script>
+<script src="/js/ux.js"></script>
