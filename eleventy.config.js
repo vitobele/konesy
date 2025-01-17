@@ -16,9 +16,11 @@ module.exports = function(eleventyConfig) {
   // https://www.11ty.dev/docs/data-deep-merge/
   eleventyConfig.setDataDeepMerge(true);
 
+  // Watch Target
+  eleventyConfig.addWatchTarget("./src/js/");
+
   // Passthrough file copy
   eleventyConfig.addPassthroughCopy({"src/img":"/img"});
-  eleventyConfig.addPassthroughCopy({"src/js":"/js"});
   eleventyConfig.addPassthroughCopy({"src/css/lib":"/css/lib"});
 
   // Markdown-it configuration with footnote plugin
