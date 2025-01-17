@@ -4,10 +4,10 @@
   "scripts": {
     "clean": "node -e \"try { require('fs').rmSync('_site', { recursive: true, force: true }); } catch (e) { if (e.code !== 'ENOENT') throw e; }\"",
     "clean:modules": "node -e \"require('fs').rmSync('node_modules', { recursive: true, force: true });\"",
-    "build": "cross-env NODE_ENV=production npm run build:css && npx @11ty/eleventy",
+    "build": "npm run build:css && npm run 11ty:build",
     "start": "concurrently \"npm run watch:css\" \"npx @11ty/eleventy --serve --quiet\"",
     "11ty:serve": "npx @11ty/eleventy --serve --quiet",
-    "11ty:build": "npx @11ty/eleventy",
+    "11ty:build": "cross-env NODE_ENV=production npx @11ty/eleventy",
     "watch:css": "tailwindcss -i src/css/main.css -o _site/css/main.css --watch",
     "build:css": "tailwindcss -i src/css/main.css -o _site/css/main.css --minify",
     "debug": "cross-env DEBUG=Eleventy* npx @11ty/eleventy",

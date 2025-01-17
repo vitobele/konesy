@@ -57,22 +57,24 @@ module.exports = function(eleventyConfig) {
   });
 
   const isProduction = process.env.NODE_ENV === 'production';
-    console.log(`Running in production mode: ${isProduction}`);
+  console.log(`Running in production mode: ${isProduction}`);
+  console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
 
-    if (isProduction) {
-        eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
-            if (outputPath && outputPath.endsWith(".html")) {
-                console.log(`Minifying HTML: ${outputPath}`);
-                let minified = htmlmin.minify(content, {
-                    useShortDoctype: true,
-                    removeComments: true,
-                    collapseWhitespace: true
-                });
-                return minified;
-            }
-            return content;
+  if (isProduction) {
+    eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
+      if (outputPath && outputPath.endsWith(".html")) {
+        console.log(`Minifying HTML: ${outputPath}`);
+        let minified = htmlmin.minify(content, {
+          useShortDoctype: true,
+          removeComments: true,
+          collapseWhitespace: true
         });
-    }
+        console.log(`Minified content for: ${outputPath}`);
+        return minified;
+      }
+      return content;
+    });
+  }
   
   return {
     dir: {
