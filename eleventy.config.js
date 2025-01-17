@@ -1,5 +1,6 @@
 const markdownIt = require("markdown-it");
 const markdownItFootnote = require("markdown-it-footnote");
+const markdownItHighlightjs = require("markdown-it-highlightjs");
 const filters = require('./lib/filters');
 
 module.exports = function(eleventyConfig) {
@@ -25,7 +26,7 @@ module.exports = function(eleventyConfig) {
     html: true, // Enable HTML tags in source
     linkify: true, // Autoconvert URL-like text to links
     typographer: true // Enable smartypants and other typographic transformations
-  }).use(markdownItFootnote);
+  }).use(markdownItFootnote).use(markdownItHighlightjs); 
 
   eleventyConfig.setLibrary("md", markdownLib);
 
