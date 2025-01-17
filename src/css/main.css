@@ -9,7 +9,7 @@
       @apply mb-4;
     }
     :is(h1, h2, h3, h4, h5, h6) {
-      @apply mt-4 font-semibold dark:text-white;
+      @apply mt-4 font-semibold dark:text-white text-gray-950;
     }
     h1 {
       @apply text-3xl md:text-4xl;
