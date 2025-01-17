@@ -4,7 +4,7 @@
   "scripts": {
     "clean": "node -e \"try { require('fs').rmSync('_site', { recursive: true, force: true }); } catch (e) { if (e.code !== 'ENOENT') throw e; }\"",
     "clean:modules": "node -e \"require('fs').rmSync('node_modules', { recursive: true, force: true });\"",
-    "build": "npm run build:css && npx @11ty/eleventy",
+    "build": "cross-env NODE_ENV=production npm run build:css && npx @11ty/eleventy",
     "start": "concurrently \"npm run watch:css\" \"npx @11ty/eleventy --serve --quiet\"",
     "11ty:serve": "npx @11ty/eleventy --serve --quiet",
     "11ty:build": "npx @11ty/eleventy",
@@ -21,6 +21,7 @@
     "@11ty/eleventy": "^3.0.0",
     "concurrently": "^9.1.0",
     "cross-env": "^7.0.3",
+    "html-minifier-terser": "^7.2.0",
     "markdown-it": "^14.1.0",
     "markdown-it-footnote": "^4.0.0",
     "markdown-it-highlightjs": "^4.2.0",

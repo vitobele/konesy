@@ -1,6 +1,7 @@
 const markdownIt = require("markdown-it");
 const markdownItFootnote = require("markdown-it-footnote");
 const markdownItHighlightjs = require("markdown-it-highlightjs");
+const htmlmin = require('html-minifier-terser');
 const filters = require('./lib/filters');
 
 module.exports = function(eleventyConfig) {
@@ -54,6 +55,24 @@ module.exports = function(eleventyConfig) {
     }
     return content;
   });
+
+  const isProduction = process.env.NODE_ENV === 'production';
+    console.log(`Running in production mode: ${isProduction}`);
+
+    if (isProduction) {
+        eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
+            if (outputPath && outputPath.endsWith(".html")) {
+                console.log(`Minifying HTML: ${outputPath}`);
+                let minified = htmlmin.minify(content, {
+                    useShortDoctype: true,
+                    removeComments: true,
+                    collapseWhitespace: true
+                });
+                return minified;
+            }
+            return content;
+        });
+    }
   
   return {
     dir: {
