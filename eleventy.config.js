@@ -1,8 +1,8 @@
 const markdownIt = require("markdown-it");
 const markdownItFootnote = require("markdown-it-footnote");
 const markdownItHighlightjs = require("markdown-it-highlightjs");
-const htmlmin = require('html-minifier-terser');
 const filters = require('./lib/filters');
+const minifyHtml = require('./lib/transform/minifyHtml');
 
 module.exports = function(eleventyConfig) {
 
@@ -56,24 +56,14 @@ module.exports = function(eleventyConfig) {
     return content;
   });
 
+  // // transform html output with minification at production mode
   const isProduction = process.env.NODE_ENV === 'production';
-  console.log(`Running in production mode: ${isProduction}`);
-  console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
+  // console.log(`Running in production mode: ${isProduction}`); //uncomment if necessary for debugging
+  // console.log(`NODE_ENV: ${process.env.NODE_ENV}`); //uncomment if necessary for debugging
 
   if (isProduction) {
-    eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
-      if (outputPath && outputPath.endsWith(".html")) {
-        console.log(`Minifying HTML: ${outputPath}`);
-        let minified = htmlmin.minify(content, {
-          useShortDoctype: true,
-          removeComments: true,
-          collapseWhitespace: true
-        });
-        console.log(`Minified content for: ${outputPath}`);
-        return minified;
-      }
-      return content;
-    });
+    // Use the external minification module
+    minifyHtml(eleventyConfig);
   }
   
   return {
