@@ -1,3 +1,102 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .PostBody { 
+    @apply text-lg text-gray-800 dark:text-neutral-300;
+    p {
+      @apply mb-4;
+    }
+    :is(h1, h2, h3, h4, h5, h6) {
+      @apply mt-4 font-semibold dark:text-white;
+    }
+    h1 {
+      @apply text-3xl md:text-4xl;
+    }
+    h2 {
+      @apply text-2xl md:text-3xl;
+    }
+    h3 {
+      @apply text-xl md:text-2xl;
+    }
+    :is(ol, ul) {
+      @apply list-outside ps-5 text-lg text-gray-800 dark:text-neutral-200 space-y-2;
+    }
+    ul,
+    ul li ul,
+    ol li ul {
+      list-style-type: revert;
+    }
+    >ul, >ol{
+      @apply mb-6;
+    }
+    ol {
+      @apply list-decimal;
+    }
+    li{
+      @apply ms-2;
+    }
+    pre{
+      @apply my-6;
+    }
+    code{
+      @apply text-base rounded;
+    }
+    blockquote{ @apply p-4 text-center sm:px-7 italic my-6 max-w-full;}
+    blockquote p{
+        @apply text-xl font-medium md:text-2xl md:leading-normal xl:text-2xl xl:leading-normal text-balance break-words;
+    }
+    blockquote :is(ol, ul){
+        @apply list-none ps-0;
+    }
+    blockquote :is(ul,ol)>li {
+      @apply ms-0
+    }
+    blockquote :is(ul,ol)>li:before { @apply me-2;
+      content: "―";
+    }
+    table{
+      @apply min-w-full divide-y divide-gray-200 dark:divide-neutral-700 my-6 table-auto text-sm;
+    }
+    th{
+      @apply px-2 py-3 text-start font-bold uppercase;
+    }
+    tr{
+      @apply odd:bg-white even:bg-gray-100 dark:odd:bg-neutral-900 dark:even:bg-neutral-800;
+    }
+    td{
+      @apply px-2 py-4 text-gray-800 dark:text-neutral-200 align-baseline;
+    }
+    figure{
+      @apply my-8;
+    }
+    hr{
+      @apply my-12;
+    }
+    img{
+      @apply w-full object-cover;
+    }
+    figcaption{
+      @apply text-sm mt-2 text-gray-500 dark:text-neutral-500 ps-2;
+    }
+    figcaption::before {
+      content: "";
+      width: 2px;
+      height: 12px;
+      background-color: #fbbf24;
+      position: absolute;
+      margin-top: 4px;
+      margin-left: -8px;
+    }
+    a{
+      @apply border-b border-primary font-semibold dark:text-white;
+    }
+    a:hover{
+      @apply border-b-2;
+    }
+    .footnote-ref a, a.footnote-backref{
+      @apply border-none text-linkTxt dark:text-primary;
+    }
+  }
+}

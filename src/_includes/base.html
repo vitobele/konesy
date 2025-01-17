@@ -23,9 +23,14 @@
     <meta name="description" content="{{description or site.description}}">
 </head>
 <body class="dark:bg-gray-950">
-    {%include 'comp/navbar.html' %}
+    <header>
+        {%include 'comp/navbar.html' %}
+    </header>
     <div class="max-w-[60rem] mx-auto min-h-screen pt-[57px] overflow-hidden">
         {{content | safe}}
     </div>
+    {% if content | containsPreCode %}
+    <link rel="stylesheet" href="/css/lib/vs2015.min.css">
+    {% endif %}
 </body>
 </html>

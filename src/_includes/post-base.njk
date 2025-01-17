@@ -1,0 +1,39 @@
+---
+layout: base.html
+---
+
+{# -- Blog Article -- #}
+<main class="mx-auto max-w-3xl px-4 pb-12 pt-6 sm:px-6 lg:px-8 lg:pt-10">
+    <article class="max-w-2xl mx-auto">
+        <div class="space-y-5 md:space-y-8">
+            <header class="space-y-4 pb-2 text-pretty">
+                <h1 class="text-3xl font-bold md:text-4xl dark:text-white">{{ title | capFirstWord }}</h1>
+                <p class="font-light italic dark:text-white font-segoe">{{ description }}</p>
+                {# -- categories and date -- #}
+                <div class="flex items-center gap-x-2 border-b py-4">
+                    <a class="block shrink-0 focus:outline-none" href="#">
+                        <img
+                            class="size-10 rounded-full"
+                            src="https://images.unsplash.com/photo-1669837401587-f9a4cfe3126e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
+                            alt="Avatar"/>
+                    </a>
+                    <div class="text-xs text-gray-800 sm:text-sm dark:text-neutral-200">
+                        <a class="font-semibold focus:outline-none" href="#">Author Name</a>
+                        <div>18 January 2023</div>
+                    </div>
+                    <a
+                        class="ml-auto rounded-full bg-gray-100 px-3 py-2 text-xs text-gray-800 hover:bg-gray-200 focus:bg-gray-200
+                            focus:outline-none sm:px-4 sm:py-2 sm:text-sm dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-800
+                            dark:focus:bg-neutral-800"
+                        href="#">Company News</a>
+                </div>
+                {# -- end categories and date -- #}
+            </header>
+            <section class="PostBody text-pretty">
+                {{ content | safe }}
+            </section>
+        </div>
+    </article>
+</main>
+{# -- End Blog Article -- #}
+<script src="/js/uiux.min.js"></script>

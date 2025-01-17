@@ -1,3 +1,4 @@
 {
+    "layout": "post-base.njk",
     "permalink": "/blog/{{(title or slug) | slugify }}/"
 }
